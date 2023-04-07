@@ -56,17 +56,24 @@ app.get("/tweets", (req, res) => {
         return res.send("")
     }
 
-    const lastTenTweets = []
+    //push para um array
+    //inverter o array
+    //slice no décimo botando em uma nova variável
+    //send nova variavel
 
-    for(let i = tweets.length - 1; i > tweets.length - 11; i--){
-        lastTenTweets.push({
-            username: tweets[i].username,
-            avatar: tweets[i].avatar,
-            tweet: tweets[i].tweet
-        })
-    }
+
+
+    // const lastTenTweets = []
+
+    // for(let i = tweets.length - 1; i > tweets.length - 11; i--){
+    //     lastTenTweets.push({
+    //         username: tweets[i].username,
+    //         avatar: tweets[i].avatar,
+    //         tweet: tweets[i].tweet
+    //     })
+    // }
     
-    res.send(lastTenTweets)
+    // res.send(lastTenTweets)
 })
 
 app.listen(5000)
