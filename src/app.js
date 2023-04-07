@@ -56,12 +56,11 @@ app.get("/tweets", (req, res) => {
         return res.send("")
     }
 
-    //push para um array
-    //inverter o array
-    //slice no décimo botando em uma nova variável
-    //send nova variavel
+    const reverseOrder = tweets.reverse()
+    const lastTenTweets = reverseOrder.slice(0, 10)
 
-
+    req.send(lastTenTweets)
+   
 
     // const lastTenTweets = []
 
