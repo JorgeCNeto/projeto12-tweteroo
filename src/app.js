@@ -56,13 +56,17 @@ app.get("/tweets", (req, res) => {
         return res.send("")
     }
 
-    const tenTweets = []
+    const lastTenTweets = []
 
     for(let i = tweets.length - 1; i > tweets.length - 11; i--){
-        tenTweets.push(tweets)
+        lastTenTweets.push({
+            username: tweets[i].username,
+            avatar: tweets[i].avatar,
+            tweet: tweets[i].tweet
+        })
     }
     
-    res.send(tenTweets)
+    res.send(lastTenTweets)
 })
 
 app.listen(5000)
