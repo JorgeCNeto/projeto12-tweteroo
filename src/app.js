@@ -16,7 +16,7 @@ app.post("/sign-up", (req, res) => {
     }
 
     if((typeof username !== "string") || (typeof avatar !== "string")){
-        return res.send("Todos os campos são obrigatórios!")
+        return res.status(400).send("Todos os campos são obrigatórios!")
     }
 
     const newUser = {username, avatar}
@@ -26,11 +26,18 @@ app.post("/sign-up", (req, res) => {
 })
 
 app.post("/tweets", (req, res) => {
-    if(user === ""){
+    
+    const { username, tweet } = req.body
+
+    const userVerify = user.find(u => u.username === username)
+    
+    if(!userVerify){
         return res.status(401).send("UNAUTHORIZED")
     }
 
-    const { username, tweet } = req.body
+    if(!username || !tweet){
+        return res.sendStatus(400)
+    }
 
     if((typeof username !== "string") || (typeof tweet !== "string")){
         return res.send("Todos os campos são obrigatórios!")
