@@ -53,7 +53,7 @@ app.get("/tweets", (req, res) => {
     const {username, avatar, tweet} = req.params
 
     if(tweets === ""){
-        return res.send([])
+        return res.send("")
     }
 
     const tenTweets = []
