@@ -40,7 +40,7 @@ app.post("/tweets", (req, res) => {
     }
 
     if((typeof username !== "string") || (typeof tweet !== "string")){
-        return res.send("Todos os campos são obrigatórios!")
+        return res.status(400).send("Todos os campos são obrigatórios!")
     }
     
     const tweetDeploy = {username, tweet}
@@ -50,7 +50,19 @@ app.post("/tweets", (req, res) => {
 })
 
 app.get("/tweets", (req, res) => {
+    const {username, avatar, tweet} = req.params
 
+    if(tweets === ""){
+        return res.send([])
+    }
+
+    const tenTweets = []
+
+    for(let i = tweets.length - 1; i > tweets.length - 11; i--){
+        tenTweets.push(tweets)
+    }
+    
+    res.send(tenTweets)
 })
 
 app.listen(5000)
