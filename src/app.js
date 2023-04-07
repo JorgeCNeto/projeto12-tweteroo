@@ -35,10 +35,14 @@ app.post("/tweets", (req, res) => {
         return res.send("Todos os campos são obrigatórios!")
     }
     
-    const tweet = {username, tweet}
+    const tweetDeploy = {username, tweet}
 
-    tweets.push(tweet)
+    tweets.push(tweetDeploy)
     res.status(201).send("OK")
+})
+
+app.get("/tweets", (req, res) => {
+    
 })
 
 app.listen(5000)
