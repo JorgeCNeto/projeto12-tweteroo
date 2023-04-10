@@ -64,7 +64,7 @@ app.get("/tweets", (req, res) => {
     const lastTenTweets = reverseOrderTweets.slice(0, 10)
  
     for(let i = 0; i < lastTenTweets.length; i++){
-       tweetSend.push(tweets[i])
+       tweetSend.push(lastTenTweets[i])
     }
     
     res.send(tweetSend)
