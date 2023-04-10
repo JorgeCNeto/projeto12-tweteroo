@@ -7,7 +7,7 @@ app.use(express.json())
 
 const user = []
 const tweets = []
-const reverseOrderTweets = tweets.reverse()
+
 
 app.post("/sign-up", (req, res) => {
     const { username, avatar} = req.body
@@ -51,19 +51,23 @@ app.post("/tweets", (req, res) => {
 })
 
 app.get("/tweets", (req, res) => {
-    // const {username, tweet} = req.params
+    const {username, tweet} = req.body
+    const u = use.find((u) => u.username === username)
+    const tweetSend = []
 
-    // const tweetReceived = { username, avatar: user.avatar, tweet }
+    const tweetWithAvatar = { username, avatar: u.avatar, tweet }
 
-   
+    tweets.push(tweetWithAvatar)
+
+    const reverseOrderTweets = tweets.reverse()
         
     const lastTenTweets = reverseOrderTweets.slice(0, 10)
  
-    // for(let i = 0; i < lastTenTweets.length; i++){
-       
-    // }
+    for(let i = 0; i < lastTenTweets.length; i++){
+       tweetSend.push(tweets[i])
+    }
     
-    res.send(lastTenTweets)
+    res.send(tweetSend)
 })
 
 app.listen(5000)
