@@ -52,7 +52,7 @@ app.post("/tweets", (req, res) => {
 
 app.get("/tweets", (req, res) => {
     const {username, tweet} = req.body
-    const u = use.find((u) => u.username === username)
+    const u = user.find((u) => u.username === username)
     const tweetSend = []
 
     const tweetWithAvatar = { username, avatar: u.avatar, tweet }
