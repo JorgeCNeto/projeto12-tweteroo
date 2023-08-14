@@ -36,7 +36,7 @@ app.post("/tweets", (req, res) => {
     }
 
     if(!username || !tweet){
-        return res.sendStatus(400)
+        return res.status(400).send("Todos os campos são obrigatórios!")
     }
 
     if((typeof username !== "string") || (typeof tweet !== "string")){
@@ -50,13 +50,6 @@ app.post("/tweets", (req, res) => {
 })
 
 app.get("/tweets", (req, res) => {
-    // const {username, tweet} = req.body
-    // const u = user.find((u) => u.username === username)
-    // const tweetSend = []
-
-    // const tweetWithAvatar = { username, avatar: u.avatar, tweet }
-
-    // tweets.push(tweetWithAvatar)
     const tweetSend = tweets.map((tweet) =>{
         const u = user.find((u) => u.username === tweet.username)
         return {...tweet, avatar: u.avatar}
@@ -64,10 +57,6 @@ app.get("/tweets", (req, res) => {
     const reverseOrderTweets = tweetSend.reverse()
         
     const lastTenTweets = reverseOrderTweets.slice(0, 10)
- 
-    // for(let i = 0; i < lastTenTweets.length; i++){
-    //    tweetSend.push(lastTenTweets[i])
-    // }
     
     res.send(lastTenTweets)
 })
